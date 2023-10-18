@@ -6,7 +6,7 @@
 node_modules
 
 # package-lock.json if npm version 5+
-.package-lock.json
+package-lock.json
 
 # gitignore
 .gitignore
