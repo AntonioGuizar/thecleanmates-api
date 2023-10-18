@@ -1,6 +1,8 @@
 // Author: Antonio Guizar
 // Description: This file is the main entry point for the The Clean Mates API RESTful application.
 
+require('dotenv').config()
+
 const express = require("express")
 const cors = require("cors")
 const cookieSession = require("cookie-session")
@@ -13,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 // generate an app key
-app.keys = ['cGQxeThyaTBjbWltNHFrcTFxZjJ2d2xrNXdwNmlvYmU']
+app.keys = [process.env.APP_KEY]
 
 app.use(cookieSession({
     name: 'session',
@@ -35,35 +37,8 @@ app.listen(PORT, () => {
 });
 
 const db = require("./app/models")
-const Role = db.role
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.")
-    initial()
-})
-
-function initial() {
-    Role.create({
-        id: 1,
-        name: "admin"
-    })
-
-    Role.create({
-        id: 2,
-        name: "user"
-    })
-
-    Role.create({
-        id: 3,
-        name: "cleaner"
-    })
-
-    Role.create({
-        id: 4,
-        name: "client"
-    })
+db.sequelize.sync()
 
 // routes
 require('./app/routes/auth.routes')(app)
 require('./app/routes/user.routes')(app)
-
-}
