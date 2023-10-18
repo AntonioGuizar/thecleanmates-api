@@ -25,9 +25,9 @@ app.use(cookieSession({
 
 app.use(express.json())
 
-// Define a simple GET route for testing.
+// Define a simple GET route for show the README.md file
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to The Clean Mates application." })
+  res.sendFile(__dirname + '/readme.html')
 });
 
 // Set port, listen for requests
