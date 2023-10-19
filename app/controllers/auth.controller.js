@@ -24,8 +24,8 @@ exports.signup = async (req, res) => {
       const result = user.setRoles(roles)
       if (result) res.send({ message: "User registered successfully!" })
     } else {
-      // user has role = 1
-      const result = user.setRoles([4])
+      // user has by default the role of client
+      const result = user.setRoles([3])
       if (result) res.send({ message: "User registered successfully!" })
     }
   } catch (error) {

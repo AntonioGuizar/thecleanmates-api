@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        logo_path: {
+        logoPath: {
             type: Sequelize.STRING,
             allowNull: false
         }

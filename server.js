@@ -30,17 +30,26 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + '/readme.html')
 });
 
-// Set port, listen for requests
-const PORT = process.env.PORT || 8080
+const db = require("./app/models")
+const initial = require("./app/config/db.js")
+
+const PORT = (process.env.status === 'production') ? process.env.PROD_PORT : process.env.DEV_PORT
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
 });
 
-const db = require("./app/models")
-db.sequelize.sync()
+if (process.env.NODE_ENV === 'production') {
+    db.sequelize.sync()
+} else {
+    db.sequelize.sync({force: true}).then(() => {
+        console.log("Drop and re-sync db.")
+        initial.start()
+    })
+}
 
 // routes
 require('./app/routes/auth.routes')(app)
 require('./app/routes/user.routes')(app)
 require('./app/routes/brand.routes.js')(app)
-//require('./app/routes/sneaker.routes.js')(app)
+require('./app/routes/sneaker.routes.js')(app)

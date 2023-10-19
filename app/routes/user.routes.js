@@ -19,12 +19,6 @@ module.exports = function(app) {
     )
 
     app.get(
-        "/api/test/user",
-        [authJwt.verifyToken, authJwt.isUser],
-        controller.userBoard
-    )
-
-    app.get(
         "/api/test/cleaner",
         [authJwt.verifyToken, authJwt.isCleaner],
         controller.cleanerBoard

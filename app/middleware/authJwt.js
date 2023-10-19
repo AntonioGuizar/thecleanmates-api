@@ -40,25 +40,6 @@ isAdmin = async (req, res, next) => {
     }
 }
 
-isUser = async (req, res, next) => {
-    try {
-        const user = await User.findByPk(req.userId)
-        const roles = await user.getRoles()
-        for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "user") {
-            return next()
-        }
-        }
-        return res.status(403).send({
-        message: "Require User Role!",
-        })
-    } catch (error) {
-        return res.status(500).send({
-        message: "Unable to validate User role!",
-        })
-    }
-}
-
 isCleaner = async (req, res, next) => {
     try {
         const user = await User.findByPk(req.userId)
@@ -100,7 +81,6 @@ isClient = async (req, res, next) => {
 const authJwt = {
     verifyToken,
     isAdmin,
-    isUser,
     isCleaner,
     isClient
 }

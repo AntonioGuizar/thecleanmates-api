@@ -46,6 +46,6 @@ db.brand.hasMany(db.sneaker, {
     foreignKey: "brandId"
 })
 
-db.ROLES = ["admin", "user", "cleaner", "client"]
+db.ROLES = ["admin", "cleaner", "client"]
 
 module.exports = db
