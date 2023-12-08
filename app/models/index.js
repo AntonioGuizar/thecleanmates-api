@@ -24,7 +24,9 @@ db.sequelize = sequelize
 db.user = require("./user.model.js")(sequelize, Sequelize)
 db.role = require("./role.model.js")(sequelize, Sequelize)
 db.brand = require("./brand.model.js")(sequelize, Sequelize)
-db.sneaker = require("./sneaker.model.js")(sequelize, Sequelize)
+db.item = require("./item.js")(sequelize, Sequelize)
+db.note = require("./note.model.js")(sequelize, Sequelize)
+db.service = require("./service.model.js")(sequelize, Sequelize)
 
 db.role.belongsToMany(db.user, {
     through: "user_roles",
@@ -38,14 +40,19 @@ db.user.belongsToMany(db.role, {
     otherKey: "roleId"
 })
 
-db.sneaker.belongsTo(db.brand, {
+db.item.belongsTo(db.brand, {
     foreignKey: "brandId"
 })
 
-db.brand.hasMany(db.sneaker, {
-    foreignKey: "brandId"
-})
+db.user.hasMany(db.note, {
+  foreignKey: 'userId',
+  onUpdate: 'CASCADE'
+});
 
-db.ROLES = ["admin", "cleaner", "client"]
+db.note.belongsTo(db.user, {
+  foreignKey: 'userId',
+});
+
+db.Roles = ["admin", "cleaner", "client"]
 
 module.exports = db

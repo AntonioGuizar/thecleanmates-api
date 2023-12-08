@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 
-exports.signup = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const user = await User.create({
       username: req.body.username,
@@ -34,6 +34,9 @@ exports.signup = async (req, res) => {
 }
 
 exports.signin = async (req, res) => {
+  if (!req.body.username || !req.body.password) {
+    return res.status(400).send({ message: "Missing Credentials!" })
+  }
   try {
     const user = await User.findOne({
       where: {
@@ -41,7 +44,7 @@ exports.signin = async (req, res) => {
       },
     })
     if (!user) {
-      return res.status(404).send({ message: "User Not found." })
+      return res.status(401).send({ message: "User Not found." })
     }
     const passwordIsValid = bcrypt.compareSync(
       req.body.password,

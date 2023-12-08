@@ -39,4 +39,16 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.getBrand
     )
+
+    app.get(
+        "/api/brand/:id/items",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getItems
+    )
+
+    app.get(
+        "/api/brandByName/:name",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getBrandByName
+    )
 }

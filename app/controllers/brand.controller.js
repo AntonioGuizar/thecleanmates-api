@@ -60,3 +60,30 @@ exports.getBrand = async (req, res) => {
         res.status(500).send({ message: error.message })
     }
 }
+
+exports.getItems = async (req, res) => {
+    try {
+        const id = req.params.id
+        const brand = await Brand.findByPk(id)
+        const items = await brand.getItems()
+        if (items) res.send({ items })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}
+
+exports.getBrandByName = async (req, res) => {
+    try {
+        const name = req.params.name
+        const brands = await Brand.findAll({
+            where: {
+                name: {
+                    [db.Sequelize.Op.like]: `%${name}%`
+                }
+            }
+        })
+        if (brands) res.send({ brands })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}

@@ -1,10 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
-    const Sneaker = sequelize.define("sneakers", {
+    const Item = sequelize.define("items", {
         name: {
             type: Sequelize.STRING,
             allowNull: false
         },
         description: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        imagePath: {
             type: Sequelize.STRING,
             allowNull: true
         },
@@ -17,5 +21,5 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
     })
-    return Sneaker
+    return Item
 }

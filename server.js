@@ -12,7 +12,9 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}));
 
 // generate an app key
 app.keys = [process.env.APP_KEY]
@@ -33,23 +35,30 @@ app.get("/", (req, res) => {
 const db = require("./app/models")
 const initial = require("./app/config/db.js")
 
-const PORT = (process.env.status === 'production') ? process.env.PROD_PORT : process.env.DEV_PORT
+const PORT = (process.env.NODE_ENV === 'production') ? process.env.PROD_PORT : process.env.DEV_PORT
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
 });
 
-if (process.env.NODE_ENV === 'production') {
-    db.sequelize.sync()
-} else {
-    db.sequelize.sync({force: true}).then(() => {
-        console.log("Drop and re-sync db.")
-        initial.start()
-    })
+const sync = async () => {
+    if (process.env.NODE_ENV === 'production') {
+        await db.sequelize.sync()
+    } else {
+        await db.sequelize.sync()
+        /* await db.sequelize.sync({force: true}).then(() => {
+            console.log("Drop and re-sync db.")
+            initial.start()
+        }) */
+    }
 }
+
+sync()
 
 // routes
 require('./app/routes/auth.routes')(app)
 require('./app/routes/user.routes')(app)
 require('./app/routes/brand.routes.js')(app)
-require('./app/routes/sneaker.routes.js')(app)
+require('./app/routes/item.routes.js')(app)
+
+module.exports = app

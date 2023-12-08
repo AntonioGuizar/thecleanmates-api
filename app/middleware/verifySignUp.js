@@ -1,8 +1,8 @@
 const db = require("../models")
-const ROLES = db.ROLES
+const Roles = db.Roles
 const User = db.user
 
-checkDuplicateUsernameOrEmail = async (req, res, next) => {
+checkDuplicateUsernameEmailOrPhone = async (req, res, next) => {
   try {
     // Username
     let user = await User.findOne({
@@ -10,7 +10,6 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         username: req.body.username
       }
     })
-    console.log(user);
     if (user) {
       return res.status(400).send({
         message: "Failed! Username is already in use!"
@@ -27,10 +26,21 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Failed! Email is already in use!"
       })
     }
+    // phone
+    user = await User.findOne({
+      where: {
+        phone: req.body.phone
+      }
+    })
+    if (user) {
+      return res.status(400).send({
+        message: "Failed! Phone is already in use!"
+      })
+    }
     next()
   } catch (error) {
     return res.status(500).send({
-      message: "Unable to validate Username!"
+      message: "Unable to validate Duplicate Username, Email or Phone"
     })
   }
 }
@@ -38,7 +48,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
 checkRolesExisted = (req, res, next) => {
   if (req.body.roles) {
     for (let i = 0; i < req.body.roles.length; i++) {
-      if (!ROLES.includes(req.body.roles[i])) {
+      if (!Roles.includes(req.body.roles[i])) {
         res.status(400).send({
           message: "Failed! Role does not exist = " + req.body.roles[i]
         })
@@ -46,12 +56,11 @@ checkRolesExisted = (req, res, next) => {
       }
     }
   }
-  
   next()
 }
 
 const verifySignUp = {
-  checkDuplicateUsernameOrEmail,
+  checkDuplicateUsernameEmailOrPhone,
   checkRolesExisted
 }
 

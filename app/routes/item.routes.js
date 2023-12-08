@@ -1,5 +1,5 @@
 const { authJwt } = require("../middleware")
-const controller = require("../controllers/sneaker.controller")
+const controller = require("../controllers/item.controller")
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -11,32 +11,32 @@ module.exports = function(app) {
     })
 
     app.post(
-        "/api/sneaker/create",
+        "/api/item/create",
         [authJwt.verifyToken, authJwt.isAdmin],
-        controller.createSneaker
+        controller.createItem
     )
 
     app.put(
-        "/api/sneaker/update",
+        "/api/item/update",
         [authJwt.verifyToken, authJwt.isAdmin],
-        controller.updateSneaker
+        controller.updateItem
     )
 
     app.post(
-        "/api/sneaker/delete",
+        "/api/item/delete",
         [authJwt.verifyToken, authJwt.isAdmin],
-        controller.deleteSneaker
+        controller.deleteItem
     )
 
     app.get(
-        "/api/sneaker/all",
+        "/api/item/all",
         [authJwt.verifyToken, authJwt.isAdmin],
-        controller.allSneakers
+        controller.allItems
     )
 
     app.get(
-        "/api/sneaker/:id",
+        "/api/item/:id",
         [authJwt.verifyToken, authJwt.isAdmin],
-        controller.getSneaker
+        controller.getItem
     )
 }
