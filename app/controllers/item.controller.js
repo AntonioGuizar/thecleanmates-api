@@ -8,6 +8,7 @@ exports.createItem = async (req, res) => {
         description: req.body.description,
         imagePath: req.body.imagePath,
         sku: req.body.sku,
+        type: req.body.type,
         brandId: req.body.brandId
         })
         if (item) res.send({ message: "Item created successfully!" })
@@ -23,6 +24,7 @@ exports.updateItem = async (req, res) => {
         description: req.body.description,
         imagePath: req.body.imagePath,
         sku: req.body.sku,
+        type: req.body.type,
         brandId: req.body.brandId
         }, {
         where: {
@@ -73,6 +75,20 @@ exports.getItemByBrand = async (req, res) => {
         const items = await Item.findAll({
             where: {
                 brandId: id
+            }
+        })
+        if (items) res.send({ items })
+    } catch (error) {
+        res.status(500).send({ message: error.message })
+    }
+}
+
+exports.getItemByType = async (req, res) => {
+    try {
+        const type = req.params.type
+        const items = await Item.findAll({
+            where: {
+                type: type
             }
         })
         if (items) res.send({ items })

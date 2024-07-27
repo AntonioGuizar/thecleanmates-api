@@ -88,6 +88,7 @@ const createItems = async () => {
             description: "The Converse Chuck Taylor All-Star is a staple of the item world, and it has been since its release in 1917. What started as a performance basketball model has since become the most popular canvas shoe of all time.",
             imagePath: "https://images.stockx.com/images/Converse-Chuck-Taylor-All-Star-Hi-Black-Product.jpg",
             sku: "M9160",
+            type: "sneaker",
             brandId: 1
         },
         {
@@ -95,6 +96,7 @@ const createItems = async () => {
             description: "The Converse Chuck 70 is a throwback item that draws on vintage details like 12 oz. 100% organic cotton canvas, higher rubber siding and a cushioned footbed.",
             imagePath: "https://images.stockx.com/images/Converse-Chuck-Taylor-All-Star-70-Hi-Archive-Print-Camo.jpg",
             sku: "163409C",
+            type: "sneaker",
             brandId: 1
         },
         {
@@ -102,6 +104,7 @@ const createItems = async () => {
             description: "The Chanel x Pharrell x adidas NMD Hu is a special edition of Pharrell Williams’s famous item that released exclusively at a Chanel pop-up shop in colette, Paris in November 2017.",
             imagePath: "https://images.stockx.com/images/Converse-Chuck-Taylor-All-Star-70s-Hi-Cheetah-Print-Product.jpg",
             sku: "D97921",
+            type: "sneaker",
             brandId: 2
         },
         {
@@ -109,6 +112,7 @@ const createItems = async () => {
             description: "The Jordan 1 Retro High Off-White Chicago is a special edition of the coveted Off-White Jordan 1 silhouette.",
             imagePath: "https://images.stockx.com/images/Air-Jordan-1-Retro-High-Off-White-Chicago-Product.jpg",
             sku: "AA3834-101",
+            type: "sneaker",
             brandId: 3
         },
         {
@@ -116,6 +120,7 @@ const createItems = async () => {
             description: "The Jordan 1 Retro High Off-White University Blue is one of the three debut colorways of Virgil Abloh’s iconic collaboration on Michael Jordan’s first signature shoe.",
             imagePath: "https://images.stockx.com/images/Air-Jordan-1-Retro-High-Off-White-University-Blue-Product.jpg",
             sku: "AQ0818-148",
+            type: "sneaker",
             brandId: 3
         },
         {
@@ -123,6 +128,7 @@ const createItems = async () => {
             description: "The Jordan 2 Retro Just Don Beach is a special release from the collaboration between Jordan Brand and Kanye West’s friend and designer Don C.",
             imagePath: "https://images.stockx.com/images/Air-Jordan-2-Retro-Just-Don-Beach-Product.jpg",
             sku: "834825-250",
+            type: "sneaker",
             brandId: 3
         },
         {
@@ -130,6 +136,7 @@ const createItems = async () => {
             description: "The Jordan 4 Retro Eminem Encore 2017 is a special re-release of the iconic collaboration from 2005.",
             imagePath: "https://images.stockx.com/images/Air-Jordan-4-Retro-Eminem-Encore-2017-Product.jpg",
             sku: "313516-441",
+            type: "sneaker",
             brandId: 3
         },
         {
@@ -137,6 +144,7 @@ const createItems = async () => {
             description: "The Jordan 5 Retro Trophy Room Ice Blue is a special edition of the silhouette designed by Marcus Jordan, son of Michael Jordan.",
             imagePath: "https://images.stockx.com/images/Air-Jordan-5-Retro-Trophy-Room-Ice-Blue-Product.jpg",
             sku: "TROPHY ROOM-ICE BLUE",
+            type: "sneaker",
             brandId: 3
         },
         {
@@ -144,6 +152,7 @@ const createItems = async () => {
             description: "The Nike Air Force 1 Low Off-White Volt is one of the most coveted styles from the Virgil Abloh x Nike “The Ten” collection.",
             imagePath: "https://images.stockx.com/images/Nike-Air-Force-1-Low-Off-White-Volt-Product.jpg",
             sku: "AO4606-700",
+            type: "sneaker",
             brandId: 4
         },
         {
@@ -151,6 +160,7 @@ const createItems = async () => {
             description: "The Nike Air Force 1 Low Off-White Black White is the second colorway of the iconic Air Force 1 reimagined by Virgil Abloh.",
             imagePath: "https://images.stockx.com/images/Nike-Air-Force-1-Low-Off-White-Black-White-Product.jpg",
             sku: "AO4606-001",
+            type: "sneaker",
             brandId: 4
         },
         {
@@ -158,6 +168,7 @@ const createItems = async () => {
             description: "The Nike Air Force 1 Low Off-White MCA University Blue is one of the most limited colorways of the monumental collaboration from Virgil Abloh and Nike.",
             imagePath: "https://images.stockx.com/images/Nike-Air-Force-1-Low-Off-White-MCA-University-Blue-Product.jpg",
             sku: "CI1173-400",
+            type: "sneaker",
             brandId: 4
         },
         {
@@ -165,6 +176,7 @@ const createItems = async () => {
             description: "The Nike Air Max 90 Off-White “Desert Ore” is the third colorway of the classic Air Max running shoe re-designed by Virgil Abloh.",
             imagePath: "https://images.stockx.com/images/Nike-Air-Max-90-Off-White-Desert-Ore-Product.jpg",
             sku: "AA7293-200",
+            type: "sneaker",
             brandId: 4
         },
         {
@@ -172,6 +184,7 @@ const createItems = async () => {
             description: "The Vans Old Skool Fear of God Black is a special edition of the classic skate shoe by Jerry Lorenzo.",
             imagePath: "https://images.stockx.com/images/Vans-Old-Skool-Platform-Black-White-Product.jpg",
             sku: "VN0A3B3UY28",
+            type: "sneaker",
             brandId: 5
         },
         {
@@ -179,6 +192,7 @@ const createItems = async () => {
             description: "The Vans Old Skool is the classic skate shoe from Vans.",
             imagePath: "https://images.stockx.com/images/Vans-Old-Skool-True-White-2019-Product.jpg",
             sku: "VN000D3HW00",
+            type: "sneaker",
             brandId: 5
         }
     ])

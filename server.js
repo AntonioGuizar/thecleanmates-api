@@ -46,10 +46,10 @@ const sync = async () => {
         await db.sequelize.sync()
     } else {
         await db.sequelize.sync()
-        /* await db.sequelize.sync({force: true}).then(() => {
+        await db.sequelize.sync({force: true}).then(() => {
             console.log("Drop and re-sync db.")
             initial.start()
-        }) */
+        })
     }
 }
 

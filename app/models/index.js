@@ -27,6 +27,7 @@ db.brand = require("./brand.model.js")(sequelize, Sequelize)
 db.item = require("./item.js")(sequelize, Sequelize)
 db.note = require("./note.model.js")(sequelize, Sequelize)
 db.service = require("./service.model.js")(sequelize, Sequelize)
+db.client = require("./client.model.js")(sequelize, Sequelize)
 
 db.role.belongsToMany(db.user, {
     through: "user_roles",
@@ -54,5 +55,6 @@ db.note.belongsTo(db.user, {
 });
 
 db.Roles = ["admin", "cleaner", "client"]
+db.Types = ["sneaker", "hat", "bag", "other"]
 
 module.exports = db
